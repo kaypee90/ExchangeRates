@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+    mongodb:
+      image: 'mongo:latest'
+      ports:
+        - '27017:27017'
+      networks:
+        - dev_network
+    api:
+      build: .
+      ports: 
+        - '9090:9090'
+      networks:
+        - dev_network 
+      depends_on:
+        - mongodb 
+
+networks:
+    dev_network:
+
